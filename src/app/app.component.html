@@ -1,0 +1,16 @@
+<hello name="{{ name }}"></hello>
+<p>Start editing to see some magic happen :)</p>
+<div [formGroup]="orderForm">
+  <div
+    formArrayName="items"
+    *ngFor="let item of orderForm.get('items').controls; let i = index"
+  >
+    <div [formGroupName]="i">
+      <input formControlName="firstname" placeholder="first name" />
+      <input formControlName="lastname" placeholder="lastname" />
+    </div>
+  </div>
+</div>
+<p>Duplicate found : {{ duplicateFound }}</p>
+Chosen name: {{ orderForm.get('items').value | json }}
+<button (click)="addItem()">Add</button>
